@@ -5,14 +5,14 @@ metadata:
   labels:
     app: notification
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: notification
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 8
+      maxSurge: 5
   template:
     metadata:
       labels:
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: notification
-          image: nasi101/notification
+          image: kiransurya97/notification-service
           envFrom:
             - configMapRef:
                 name: notification-configmap
